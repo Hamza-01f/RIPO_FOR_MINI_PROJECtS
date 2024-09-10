@@ -256,7 +256,7 @@ int Verify_existance(char Titre[][20] ,char extra_table[],int *exact_ind){
          int leng = strlen(extra_table);
         for(int i = 0 ; i < Nbr_De_Liv ; i++){//pass sur les titres
                 for(int j = 0 ; Titre[i][j] != '\0' ; j++){//pass sur chaque titre
-                    if(strcasecmp(Titre[i][j] ,extra_table[j])== 0){//comparison entre les deux titres
+                    if(Titre[i][j] , extra_table[j]){//comparison entre les deux titres
                             count++;
                       if( count == leng){
                         *exact_ind = i;
