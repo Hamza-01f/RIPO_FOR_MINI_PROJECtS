@@ -17,24 +17,24 @@ void Ajoute_Une_livre( char title[][20] ,
      if(Nbr_De_Liv <= MAX){
 
 
-      printf("Entrez le titre de livre : ");
+      printf("Entrez le titre du livre : ");
       scanf(" %[^\n]",title[Nbr_De_Liv]);
     
-      printf("Entrez l'auteur de livre : ");
+      printf("Entrez l'auteur du livre : ");
       scanf(" %[^\n]",auteur[Nbr_De_Liv]);
 
-      printf("Entrez le prix de livre : ");
+      printf("Entrez le prix du livre : ");
       scanf("%d",&price[Nbr_De_Liv]);
 
-      printf("Entrez la quantité de livre : ");
+      printf("Entrez la quantité du livre: ");
       scanf("%d",&quantity[Nbr_De_Liv]);
 
       Nbr_De_Liv += 1;
 
-      printf("Le Livre a Ajoute avec Succe : \n");
+      printf("le livre a été ajouté avec succès: \n");
     }else{
         printf("Stock complet , Impossible d'ajouter plus de livres :\n");
-        printf("Essayer de vide le stock :\n");
+        printf("essayez de le vider :\n");
     }
 }
 
@@ -44,7 +44,7 @@ void Affiche_livres_dispo(char title[][20],
         int quantity[])
         {
          if(Nbr_De_Liv == 0){
-            printf("\nLe stock est vide , Essayez de la remplir : \n");
+            printf("\nLe stock est vide , Essayez de le remplir : \n");
          }else{
 
             printf("\nVotre stock contient %d livre :\n",Nbr_De_Liv);
@@ -84,7 +84,7 @@ void Update_stock(char titre[][20],int Quant[])
 
                Quant[exact_indix] = val_Ajour;//changer le precedent quantité par nouvelle valeur
 
-              printf("La Quantité de Livre donné Mettre a jour avec succe:\n");
+              printf("la quantité du livre choisi a été mettre à jour avec succès:\n");
 
               return;
            }else{
@@ -173,7 +173,7 @@ void Suppri_livre(char titre[][20],
        do{
            char Tit_suppr[20];
 
-           printf("Entrez Le Titre De Livre Pour La Suppreme : ");
+           printf("Entrez le titre d'un livre pour le supprimer : ");
            scanf(" %[^\n]",Tit_suppr);//l'entrée de le livre 
         
            call = Verify_existance(titre,Tit_suppr,&exact_indix);
@@ -194,7 +194,7 @@ void Suppri_livre(char titre[][20],
                             for(int j = exact_indix ; j <= Nbr_De_Liv ; j++){
                                     quantity[j] = quantity[j+1];
                                 }
-                         printf("\nLe Livre Supprime Avec succe : \n");
+                         printf("\nLe livre a été supprimé avec succès : \n");
                          return;
                        }else{
                          printf("\nLe Titre Donné est pas existe Dans le Stock : \n");
@@ -225,7 +225,7 @@ void Recherche_Livre(char Titre[][20],char auteur[][20],int price[],int quantity
         do{
            char Tit_rechercher[20];
 
-           printf("Entrez Le Titre De Livre Que Vous Voulez Cherchez : ");
+           printf("entrez le titre du livre que vous souhaitez rechercher : ");
            scanf(" %[^\n]",Tit_rechercher);
 
               call = Verify_existance(Titre,Tit_rechercher,&exact_indix);
@@ -256,7 +256,7 @@ int Verify_existance(char Titre[][20] ,char extra_table[],int *exact_ind){
          int leng = strlen(extra_table);
         for(int i = 0 ; i < Nbr_De_Liv ; i++){//pass sur les titres
                 for(int j = 0 ; Titre[i][j] != '\0' ; j++){//pass sur chaque titre
-                    if(Titre[i][j] , extra_table[j]){//comparison entre les deux titres
+                    if(Titre[i][j] == extra_table[j]){//comparison entre les deux titres
                             count++;
                       if( count == leng){
                         *exact_ind = i;
