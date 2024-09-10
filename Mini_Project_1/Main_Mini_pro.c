@@ -4,6 +4,11 @@
 #define MAX 100
 
 int Nbr_De_Liv = 0;
+
+void Suppri_livre();
+void Display_nmr_total(); 
+void Recherche_Livre();
+int  Verify_existance();
 //-------------------------------------- function d'ajouter -----------------------------
 void Ajoute_Une_livre( char title[][20] ,
     char auteur[][20] ,
@@ -92,10 +97,7 @@ void Update_stock(char titre[][20],int Quant[])
     }
 }
 
-void Suppri_livre();
-void Display_nmr_total(); 
-void Recherche_Livre();
-int  Verify_existance();
+
 
 // la function int main commance sa execution
 int main(){                       //_______
@@ -254,7 +256,7 @@ int Verify_existance(char Titre[][20] ,char extra_table[],int *exact_ind){
          int leng = strlen(extra_table);
         for(int i = 0 ; i < Nbr_De_Liv ; i++){//pass sur les titres
                 for(int j = 0 ; Titre[i][j] != '\0' ; j++){//pass sur chaque titre
-                    if(Titre[i][j] == extra_table[j]){//comparison entre les deux titres
+                    if(strcasecmp(Titre[i][j] ,extra_table[j])== 0){//comparison entre les deux titres
                             count++;
                       if( count == leng){
                         *exact_ind = i;
